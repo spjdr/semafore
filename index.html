@@ -1,202 +1,80 @@
 <html>
 <head>
-
-<style>
-
-body { text-align: center; font-family: sans-serif; margin: 0; padding: 0; background: #444;}
-
-.topnav {background: #d8d8d8; }
-
-nav ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	display: block;
-}
-
-nav li {
-	float: left;
-	display: inline-block;
-}
-
-.topnav li a {
-	padding: 1.1em 1em;
-	margin: 0;
-	text-decoration: none;
-	/*text-transform: uppercase;*/
-	display: inline-block;
-	color: #777;
-	font-size: 12pt;
-}
-
-
-.topnav form {margin: 0;}
-
-.topnav input[type=text] {
-	font-size: 12pt;
-	padding: 4px;
-	margin: 15px 0 15px 1em ;
-	border: 1px solid #ddd;
-	width: 300px;
-	border: 1px solid #ccc;
-	background: #eee;
-}
-
-.topnav input[type=submit] {
-	font-size: 12pt;
-	padding: 4px 8px;
-	margin: 15px 0 15px 8px ;
-	border-radius: 4px;
-	border: 1px solid #ccc;
-	background: #aaa;
-	color: #666;
-}
-
-.nav a {
-	padding: 3em 2em;
-	margin: 0;
-	text-decoration: none;
-	text-transform: uppercase;
-	display: inline-block;
-	font-weight: bold;
-	opacity: .8;
-}
-
-.nav a:hover {
-	opacity: 1;
-}
-
-a.semafore { background: #4daf4a; color: #1c7e19;}
-a.telegraph { background: #377eb8;color: #074e98;}
-a.light {background: #984ea3; color: #681e83;}
-
-/*window*/
-
-.window {
-	position: relative; background: white; padding-bottom: 50px;
-}
-
-.title {
-	padding: 50px 0 10px 130px;
-	margin: 0;
-	background: transparent url('./assets/img/Ad_signal_flags.png') 50px 35px no-repeat;
-	height: 64px;
-	text-align: left;
-	border-top: 1px solid #444;
-}
-
-.sema {
-	height: 430px;
-	width: 700px;
-	margin: 0 auto;
-	position: relative;
-}
-
-.help {
-	position: absolute;
-	top: 130px;
-	left: 40px;
-	background-image: url('./assets/img/semafore_sender.gif');
-	background-position: left top;
-	background-repeat: no-repeat;
-	width: 350px;
-	height: 550px;
-
-}
-
-.result {
-	display: inline-block;
-	letter-spacing: 2px;
-	font-family: Courier;
-	background-color: #ccc;
-	padding: 5px;
-	margin: 0 auto;
-	min-height: 1em;
-	min-width: 4em;
-}
-
-.man {
-	background-image: url('./assets/img/s/man.png');
-	background-position: center center;
-	background-repeat: no-repeat;
-	height: 400px;
-	width: 700px;
-	position: absolute;
-	top: 00px;
-	left: 0;
-	z-index: 10;
-}
-
-.left {
-	background-image: url('./assets/img/s/leftarm.png');
-	background-position: left top;
-	background-repeat: no-repeat;
-	height: 150px;
-	width: 500px;
-	position: absolute;
-	top: 30px;
-	left: 65px;
-}
-
-.right {
-	background-image: url('./assets/img/s/rightarm.png');
-	background-position: right top;
-	background-repeat: no-repeat;
-	height: 150px;
-	width: 500px;
-	position: absolute;
-	top: 30px;
-	right: 65px;
-}
-
-
-/* clearfix */
-
-.clearfix {clear: both;}
-
-
-</style>
-
+<link rel="stylesheet" href="assets/css/screen.css" />
+<script type="text/javascript" src="assets/js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
 
+$(function(){
 
 var trap = [];
+var timed = false;
 
 function keydown(e) {
     e = e || window.event;
 
-    if (e.keyCode==65 && state[0] !== 1) { // a
-		stretch(0,1);
+    if (e.keyCode==68 && state[0] !== 1) { // d
+		$('#lb').trigger('mousedown');
+		// stretch(0,1);
     }
     if (e.keyCode==83 && state[0] != 2) { // s
-		stretch(0,2);
+		$('#lm').trigger('mousedown');
     }
-    if (e.keyCode==68 && state[0] != 3) { // d
-		stretch(0,3);
+    if (e.keyCode==65 && state[0] != 3) { // a
+    	$('#lt').trigger('mousedown');
     }
 
     // right
 
  	if (e.keyCode==74 && state[1] !== 1) { // j
-		stretch(1,1);
+		$('#rb').trigger('mousedown');
     }
 
     if (e.keyCode==75 && state[1] != 2) { // j
-		stretch(1,2);
+		$('#rm').trigger('mousedown');
     }
 
     if (e.keyCode==76 && state[1] != 3) { // j
-		stretch(1,3);
+		$('#rt').trigger('mousedown');
     }
 
-    // console.log(e.keyCode);
 }
-
-var timed = false;
 
 function keyup(e) {
 
 	e = e || window.event;
+
+	$('#lb').removeClass('press')
+		$('#lm').removeClass('press')
+			$('#lt').removeClass('press')
+				$('#rb').removeClass('press')
+					$('#rm').removeClass('press')
+						$('#rt').removeClass('press')
+
+
+	// if (e.keyCode==68 && state[0] !== 0) { // d
+	// 	$('#lb').trigger('mouseup');
+	// 	// stretch(0,1);
+ //    }
+ //    if (e.keyCode==83 && state[0] != 0) { // s
+	// 	$('#lm').trigger('mouseup');
+ //    }
+ //    if (e.keyCode==65 && state[0] != 0) { // a
+ //    	$('#lt').trigger('mouseup');
+ //    }
+
+ //    // right
+
+ // 	if (e.keyCode==74 && state[1] !== 0) { // j
+	// 	$('#rb').trigger('mouseup');
+ //    }
+
+ //    if (e.keyCode==75 && state[1] != 0) { // j
+	// 	$('#rm').trigger('mouseup');
+ //    }
+
+ //    if (e.keyCode==76 && state[1] != 0) { // j
+	// 	$('#rt').trigger('mouseup');
+ //    }
 
 	stretch(0,0);
 	stretch(1,0);
@@ -207,6 +85,7 @@ function keyup(e) {
 document.onkeydown = keydown;
 document.onkeyup = keyup;
 
+
 var state = [];
 state[0] = 0;
 state[1] = 0;
@@ -216,6 +95,8 @@ function init() {
 	stretch(1,0);
 }
 
+// sides :: 0=left, 1=right
+// pos   :: 0=neutral, 1=down, 2=middle, 3=up
 function stretch(side,pos) {
 
 	// if (state[side] === pos) { return; }
@@ -278,57 +159,115 @@ semafore[4] = [' ', ' ', 'T', 'S'];
 semafore[5] = [' ', 'T', ' ',  'R']
 semafore[6] = [' ', 'S', 'R'];
 
+
+setTimeout(function(){
+		stretch(0,3); 
+		stretch(1,3);
+	}
+	,300
+);
+setTimeout(function() {
+		stretch(0,0);
+		stretch(1,0);
+	}
+	,600
+);
+
+
+$('#lb').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(0,1); })
+		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(0,0); })
+
+$('#lm').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(0,2); })
+		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(0,0); })
+
+$('#lt').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(0,3); })
+		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(0,0); })
+
+
+$('#rt').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(1,3); })
+		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(1,0); })
+
+$('#rm').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(1,2); })
+		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(1,0); })
+
+$('#rb').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(1,1); })
+		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(1,0); })
+
+
+});
+
+// window.addEventListener ? 
+// window.addEventListener("load",waver,false) : 
+// window.attachEvent && window.attachEvent("onload",waver);
+
+
+
+
+
+// window.addEventListener("DOMContentLoaded", waver,s false);
+
 </script>
+
 </head>
 <body>
 <nav>
-<div class="topnav">
-<ul class="spdjr">
-	<li><a class="spjdr" href="/"><img height="16px" width="16px" src="./assets/img/Ad_signal_flags.png"/> spjdr.dk signalering</a> </li>
-	<li><form method="get"><input type="text" name="q"><input type="submit" value="søg spjdrpedia"></form></li>
-</ul>
-<div class="clearfix"></div>
-</div>
 
-<ul class="nav">
-	<li><a class="telegraph" href="telegraf.html">Telegraf</a></li>
-	<li><a class="semafore" href="semafore.html">Semafore</a></li>
-	<li><a class="light" href="light.html">Lys og Lygte</a></li>
-</ul>
+<div id="header">
+	<div id="highlights">
+		<a style="width: 100%; background: #FEDEA2" href="http://spjdrpedia.dk/wiki/Kategori:Signalering" class="signalering"><span>Signalering</span></a>
+	</div>
+	<div id="menu">
+		<a href="http://ny.spjdr.dk/semafore" id="logo"></a>
+	</div>
+</div>
 </nav>
 
-<div class="clearfix"></div>
+<div class="wrapper">
+<div class="help">
+	<h4>Hjælp</h4>
+
+	<img src="assets/img/semafore_sender.gif" />
+</div>
 
 <div class="window">
-<h1 class="title">SEND SEMAFORE</h1>
-
-	<div class="help"></div>
-
+<!-- <h1 class="title">Send semafore</h1> -->
+<div class="result"><span id="result"></span><span class="blink"></span></div>
 	<div class="sema">
 		<div class="left"></div>
 		<div class="right"></div>
 		<div class="man"></div>
 	</div>
-	<div class="result" id="result"></div>
+	
 
+<div class="controls">
+<a class="lt" id="lt">A</a>
+<a class="lm" id="lm">S</a>
+<a class="lb" id="lb">D</a>
 
-<h1 class="title">MODTAG SEMAFORE</h1>
+<a class="rb" id="rb">J</a>
+<a class="rm" id="rm">K</a>
+<a class="rt" id="rt">L</a>
+</div>
+</div>
+</div>
 
-
-
-<h1 class="title">MERE OM SEMAFORE</h1>
-
-<p>Du kan læse meget mere om signalering of semafore på <a href="http://spjdrpedia.dk/wiki/Semafore">spjdrpedia.dk</a>.</p>
-
+<div class="footer" style="background: #eee">
+<p>Du kan læse meget mere om signalering of semafore på <a href="http://spjdrpedia.dk/wiki/Semafore">spjdrpedia.dk/wiki/Semafore</a>.</p>
 </div>
 <div class="footer">
+	<p>Semafore er bygget af <a class="spdjr" href="http://spjdr.dk">SPJDR</a>. </p>
 
+	<p>Meninger, likes, og forslag til forbedringer modtages med kyshånd på <a href="http://facebook.com/spjdr">facebook.com/spjdr</a>.</p>
+
+	<p>Kildekode kan findes på <a href="http://github.com/spjdr/semafore">github.com/spjdr/semafore</a>.</p>
 </div>
 
-
-
-
-<script type="text/javascript" src="./assets/js/move/move.min.js" ></script>
-
+<script type="text/javascript" src="assets/js/move/move.min.js" ></script>
+<script type='text/javascript'>
+/* Modernizr 2.7.1 (Custom Build) | MIT & BSD
+ * Build: http://modernizr.com/download/#-svg-cssclasses-cssclassprefix:modernizr
+ */
+;window.Modernizr=function(a,b,c){function v(a){j.cssText=a}function w(a,b){return v(prefixes.join(a+";")+(b||""))}function x(a,b){return typeof a===b}function y(a,b){return!!~(""+a).indexOf(b)}function z(a,b,d){for(var e in a){var f=b[a[e]];if(f!==c)return d===!1?a[e]:x(f,"function")?f.bind(d||b):f}return!1}var d="2.7.1",e={},f=!0,g=b.documentElement,h="modernizr",i=b.createElement(h),j=i.style,k,l={}.toString,m={svg:"http://www.w3.org/2000/svg"},n={},o={},p={},q=[],r=q.slice,s,t={}.hasOwnProperty,u;!x(t,"undefined")&&!x(t.call,"undefined")?u=function(a,b){return t.call(a,b)}:u=function(a,b){return b in a&&x(a.constructor.prototype[b],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(b){var c=this;if(typeof c!="function")throw new TypeError;var d=r.call(arguments,1),e=function(){if(this instanceof e){var a=function(){};a.prototype=c.prototype;var f=new a,g=c.apply(f,d.concat(r.call(arguments)));return Object(g)===g?g:f}return c.apply(b,d.concat(r.call(arguments)))};return e}),n.svg=function(){return!!b.createElementNS&&!!b.createElementNS(m.svg,"svg").createSVGRect};for(var A in n)u(n,A)&&(s=A.toLowerCase(),e[s]=n[A](),q.push((e[s]?"":"no-")+s));return e.addTest=function(a,b){if(typeof a=="object")for(var d in a)u(a,d)&&e.addTest(d,a[d]);else{a=a.toLowerCase();if(e[a]!==c)return e;b=typeof b=="function"?b():b,typeof f!="undefined"&&f&&(g.className+=" modernizr"+(b?"":"no-")+a),e[a]=b}return e},v(""),i=k=null,e._version=d,g.className=g.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(f?" modernizrjs modernizr"+q.join(" modernizr"):""),e}(this,this.document);
+</script>
 </body>
 </html>
