@@ -170,23 +170,23 @@ setTimeout(function() {
 
 // interface
 $('#lb').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(0,1); })
-		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(0,0); })
+		.on('mouseup mouseout touchleave',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(0,0); })
 
 $('#lm').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(0,2); })
-		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(0,0); })
+		.on('mouseup mouseout touchleave',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(0,0); })
 
 $('#lt').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(0,3); })
-		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(0,0); })
+		.on('mouseup mouseout touchleave',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(0,0); })
 
 
 $('#rt').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(1,3); })
-		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(1,0); })
+		.on('mouseup mouseout touchleave',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(1,0); })
 
 $('#rm').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(1,2); })
-		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(1,0); })
+		.on('mouseup mouseout touchleave',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(1,0); })
 
 $('#rb').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(1,1); })
-		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(1,0); })
+		.on('mouseup mouseout touchleave',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(1,0); })
 
 var semafaar = false;
 
