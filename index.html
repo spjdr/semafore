@@ -1,5 +1,21 @@
 <html>
-<head>
+<head manifest="semafore.manifest">
+<meta charset="utf-8">
+<meta name="description" content="Semafore. Øv dig i at sende semafore når du sidder i toget, på sofaen eller i teltet om aftenen. Signalering dagen lang.">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta property="og:title" content="SPJDRsemafore"/>
+<meta property="og:url" content="http://ny.spjdr.dk/semafore/"/>
+<meta property="og:image" content="http://ny.spjdr.dk/semafore/assets/img/semafore-icon-big.png"/>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
 <link rel="stylesheet" href="assets/css/screen.css" />
 <script type="text/javascript" src="assets/js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
@@ -44,37 +60,11 @@ function keyup(e) {
 	e = e || window.event;
 
 	$('#lb').removeClass('press')
-		$('#lm').removeClass('press')
-			$('#lt').removeClass('press')
-				$('#rb').removeClass('press')
-					$('#rm').removeClass('press')
-						$('#rt').removeClass('press')
-
-
-	// if (e.keyCode==68 && state[0] !== 0) { // d
-	// 	$('#lb').trigger('mouseup');
-	// 	// stretch(0,1);
- //    }
- //    if (e.keyCode==83 && state[0] != 0) { // s
-	// 	$('#lm').trigger('mouseup');
- //    }
- //    if (e.keyCode==65 && state[0] != 0) { // a
- //    	$('#lt').trigger('mouseup');
- //    }
-
- //    // right
-
- // 	if (e.keyCode==74 && state[1] !== 0) { // j
-	// 	$('#rb').trigger('mouseup');
- //    }
-
- //    if (e.keyCode==75 && state[1] != 0) { // j
-	// 	$('#rm').trigger('mouseup');
- //    }
-
- //    if (e.keyCode==76 && state[1] != 0) { // j
-	// 	$('#rt').trigger('mouseup');
- //    }
+	$('#lm').removeClass('press')
+	$('#lt').removeClass('press')
+	$('#rb').removeClass('press')
+	$('#rm').removeClass('press')
+	$('#rt').removeClass('press')
 
 	stretch(0,0);
 	stretch(1,0);
@@ -100,7 +90,6 @@ function init() {
 function stretch(side,pos) {
 
 	// if (state[side] === pos) { return; }
-
 	if (state[side] === pos) {
 		return;
 	}
@@ -160,6 +149,7 @@ semafore[5] = [' ', 'T', ' ',  'R']
 semafore[6] = [' ', 'S', 'R'];
 
 
+// wave around at start
 setTimeout(function(){
 		stretch(0,3); 
 		stretch(1,3);
@@ -173,7 +163,7 @@ setTimeout(function() {
 	,600
 );
 
-
+// interface
 $('#lb').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(0,1); })
 		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(0,0); })
 
@@ -193,19 +183,7 @@ $('#rm').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).add
 $('#rb').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(1,1); })
 		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(1,0); })
 
-
 });
-
-// window.addEventListener ? 
-// window.addEventListener("load",waver,false) : 
-// window.attachEvent && window.attachEvent("onload",waver);
-
-
-
-
-
-// window.addEventListener("DOMContentLoaded", waver,s false);
-
 </script>
 
 </head>
