@@ -217,13 +217,13 @@ a.signalering { background: #4daf4a; color: #1c7e19;}
 
 .semafaar .left {
 	background-image: url('../img/f/leftarm.png');
-	left: -1px;
+	left: 0px;
 	top: 76px;
 }
 
 .semafaar .right {
 	background-image: url('../img/f/rightarm.png');
-	right: -6px;
+	right: -4px;
 	top: 80px;
 }
 
@@ -240,16 +240,15 @@ a.signalering { background: #4daf4a; color: #1c7e19;}
 .controls {
 	margin: 0 auto;
 	max-width: 600px;
-	text-align: right;
 	font-size: 70%;
 	z-index: 15;
 }
 
 	.controls a {
 		display: inline-block;
-		width: 50px;
-		height: 50px;
-		margin: 0 20px;
+		width: 60px;
+		height: 60px;
+		margin: 0 10px;
 		background-color: #eee;
 		background-image: url('../img/flags.png');
 		padding-right: 5px;
@@ -258,6 +257,7 @@ a.signalering { background: #4daf4a; color: #1c7e19;}
 		border: 1px solid #ccc;
 		border-radius: 5px;
 		box-shadow: 1px 1px 4px #888;
+		text-align: right;
 	}
 
 	.modernizrsvg .controls a {
@@ -272,27 +272,27 @@ a.signalering { background: #4daf4a; color: #1c7e19;}
 	/* flags */
 
 	#lt {
-		background-position: 0px 0px;
+		background-position: 8px 8px;
 	}
 
 	#lm {
-		background-position: 0px -50px;
+		background-position: 8px -42px;
 	}
 
 	#lb {
-		background-position: -2px -100px;
+		background-position: 6px -92px;
 	}
 
 	#rt {
-		background-position: 0px -150px;
+		background-position: 8px -142px;
 	}
 
 	#rm {
-		background-position: 0px -200px;
+		background-position: 8px -192px;
 	}
 
 	#rb {
-		background-position: 0px -250px;
+		background-position: 8px -242px;
 	}
 
 
