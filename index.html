@@ -7,15 +7,15 @@
 <meta property="og:title" content="SPJDRsemafore"/>
 <meta property="og:url" content="http://ny.spjdr.dk/semafore/"/>
 <meta property="og:image" content="http://ny.spjdr.dk/semafore/assets/img/semafore-icon-big.png"/>
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
-<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
-<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
-<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
-<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
-<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
-<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon" sizes="76x76" href="apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png" />
 <link rel="stylesheet" href="assets/css/screen.css" />
 <script type="text/javascript" src="assets/js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
@@ -59,12 +59,12 @@ function keyup(e) {
 
 	e = e || window.event;
 
-	$('#lb').removeClass('press')
-	$('#lm').removeClass('press')
-	$('#lt').removeClass('press')
-	$('#rb').removeClass('press')
-	$('#rm').removeClass('press')
-	$('#rt').removeClass('press')
+	$('#lb').removeClass('press');
+	$('#lm').removeClass('press');
+	$('#lt').removeClass('press');
+	$('#rb').removeClass('press');
+	$('#rm').removeClass('press');
+	$('#rt').removeClass('press');
 
 	stretch(0,0);
 	stretch(1,0);
@@ -170,23 +170,23 @@ setTimeout(function() {
 
 // interface
 $('#lb').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(0,1); })
-		.on('mouseup mouseout touchleave',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(0,0); })
+		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(0,0); stretch(0,0); })
 
 $('#lm').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(0,2); })
-		.on('mouseup mouseout touchleave',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(0,0); })
+		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(0,0); stretch(0,0); })
 
 $('#lt').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(0,3); })
-		.on('mouseup mouseout touchleave',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(0,0); })
+		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(0,0); stretch(0,0); })
 
 
 $('#rt').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(1,3); })
-		.on('mouseup mouseout touchleave',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(1,0); })
+		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(1,0); stretch(0,0); })
 
 $('#rm').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(1,2); })
-		.on('mouseup mouseout touchleave',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(1,0); })
+		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(1,0); stretch(0,0); })
 
 $('#rb').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(1,1); })
-		.on('mouseup mouseout touchleave',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(1,0); })
+		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(1,0); stretch(0,0); })
 
 var semafaar = false;
 
