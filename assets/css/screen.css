@@ -165,7 +165,6 @@ a.signalering { background: #4daf4a; color: #1c7e19;}
 	line-height: 1em;
 	vertical-align: top;
 	border-radius: 3px;
-	max-width: 20em;
 }
 
 .blink {
@@ -212,6 +211,30 @@ a.signalering { background: #4daf4a; color: #1c7e19;}
 	right: 15px;
 }
 
+.semafaar .man {
+	background-image: url('../img/f/man.png');
+}
+
+.semafaar .left {
+	background-image: url('../img/f/leftarm.png');
+	left: -1px;
+	top: 76px;
+}
+
+.semafaar .right {
+	background-image: url('../img/f/rightarm.png');
+	right: -6px;
+	top: 80px;
+}
+
+.faar {
+	cursor: pointer;
+	display: inline-block;
+	float: right;
+	line-height: 60px;
+	margin-right: 20px;
+}
+
 /* controls */
 
 .controls {
@@ -219,6 +242,7 @@ a.signalering { background: #4daf4a; color: #1c7e19;}
 	max-width: 600px;
 	text-align: right;
 	font-size: 70%;
+	z-index: 15;
 }
 
 	.controls a {

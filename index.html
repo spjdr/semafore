@@ -1,5 +1,5 @@
-<html>
-<head manifest="semafore.manifest">
+<html manifest="semafore.manifest">
+<head>
 <meta charset="utf-8">
 <meta name="description" content="Semafore. Øv dig i at sende semafore når du sidder i toget, på sofaen eller i teltet om aftenen. Signalering dagen lang.">
 <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -113,7 +113,12 @@ function stretch(side,pos) {
 	var sgn = 2*side-1;
 
 	var arm = side ? 'right' : 'left';
-	move('.' + arm).rotate(sgn*(-pos*50+100)).end();
+
+	if (semafaar) {
+		move('.' + arm).rotate(sgn*(-pos*50+100)).duration(200).end();
+	} else {
+		move('.' + arm).rotate(sgn*(-pos*50+100)).end();
+	}
 	state[side] = pos;
 
 	if (pos>0 && timed === false) { timed = true; setTimeout(function() { sema(side,pos); }, 340); }
@@ -183,6 +188,19 @@ $('#rm').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).add
 $('#rb').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).addClass('press'); stretch(1,1); })
 		.on('mouseup mouseout touchend',function(e) { e.preventDefault(); $(this).removeClass('press'); stretch(1,0); })
 
+var semafaar = false;
+
+$('#faar').on('click',function() {
+	if (semafaar) {
+		$('.window').removeClass('semafaar');
+		$(this).html('se-ma-får')
+	} else {
+		$('.window').addClass('semafaar');
+		$(this).html('se-mand-fore')
+	}
+	semafaar = !semafaar;
+});
+
 });
 </script>
 
@@ -196,6 +214,7 @@ $('#rb').on('mousedown touchstart',function(e) { e.preventDefault(); $(this).add
 	</div>
 	<div id="menu">
 		<a href="http://ny.spjdr.dk/semafore" id="logo"></a>
+		<a id="faar" class="faar">se-ma-får</a>
 	</div>
 </div>
 </nav>
