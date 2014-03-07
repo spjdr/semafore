@@ -5,8 +5,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta property="og:title" content="SPJDRsemafore"/>
-<meta property="og:url" content="http://ny.spjdr.dk/semafore/"/>
-<meta property="og:image" content="http://ny.spjdr.dk/semafore/assets/img/semafore-icon-big.png"/>
+<meta property="og:url" content="http://spjdr.dk/semafore/"/>
+<meta property="og:image" content="http://spjdr.dk/semafore/assets/img/semafore-icon-big.png"/>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57x57.png" />
@@ -89,6 +89,11 @@ function init() {
 // pos   :: 0=neutral, 1=down, 2=middle, 3=up
 function stretch(side,pos) {
 
+	var skill = 500; // milliseconds of raising the arm
+	if (semafaar) {
+		skill = 200;
+	}
+
 	// if (state[side] === pos) { return; }
 	if (state[side] === pos) {
 		return;
@@ -102,7 +107,9 @@ function stretch(side,pos) {
 		// place arm in front?
 		// move('.' + (side ? 'right' : 'left')).set('z-index',4);
 		// move other arm
-		move('.' + otherarm).rotate(sgn*(-(pos+3)*50+60)).end();
+		
+		move('.' + otherarm).rotate(sgn*(-(pos+3)*50+60)).duration(skill).end();
+		
 		state[1-side] = pos+3;
 		return;
 	}
@@ -114,11 +121,7 @@ function stretch(side,pos) {
 
 	var arm = side ? 'right' : 'left';
 
-	if (semafaar) {
-		move('.' + arm).rotate(sgn*(-pos*50+100)).duration(200).end();
-	} else {
-		move('.' + arm).rotate(sgn*(-pos*50+100)).end();
-	}
+	move('.' + arm).rotate(sgn*(-pos*50+100)).duration(skill).end();
 	state[side] = pos;
 
 	if (pos>0 && timed === false) { timed = true; setTimeout(function() { sema(side,pos); }, 340); }
@@ -213,7 +216,7 @@ $('#faar').on('click',function() {
 		<a style="width: 100%; background: #FEDEA2" href="http://spjdrpedia.dk/wiki/Kategori:Signalering" class="signalering"><span>Signalering</span></a>
 	</div>
 	<div id="menu">
-		<a href="http://ny.spjdr.dk/semafore" id="logo"></a>
+		<a href="http://spjdr.dk/semafore" id="logo"></a>
 		<a id="faar" class="faar">se-ma-får</a>
 	</div>
 </div>
@@ -249,7 +252,7 @@ $('#faar').on('click',function() {
 </div>
 
 <div class="footer" style="background: #eee">
-<p>Du kan læse meget mere om signalering of semafore på <a href="http://spjdrpedia.dk/wiki/Semafore">spjdrpedia.dk/wiki/Semafore</a>.</p>
+<p>Du kan læse meget mere om signalering om semafore på <a href="http://spjdrpedia.dk/wiki/Semafore">spjdrpedia.dk/wiki/Semafore</a>.</p>
 </div>
 <div class="footer">
 	<p>Semafore er bygget af <a class="spdjr" href="http://spjdr.dk">SPJDR</a>. </p>
